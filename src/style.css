@@ -8,6 +8,10 @@
 /* variables */
 :root {
   --primary: #3d405b;
+  --red: #c1292e;
+  --green: #588157;
+  --yellow: #fcbf49;
+  --purple: #52154e;
 }
 
 /* Default style */
@@ -185,12 +189,25 @@ header {
   color: var(--primary);
 }
 
+.menu-box-header::after {
+  content: '';
+  display: block;
+  border: 1px solid var(--primary);
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  opacity: 0.3;
+}
+
 .menu-box-option {
   background-color: transparent;
   border: none;
   outline: none;
   display: flex;
   padding: 0.6em;
+  align-items: center;
 }
 .active {
   font-size: 14px;
@@ -199,4 +216,25 @@ header {
 
 .menu-box-option:hover {
   background-color: #ddd;
+}
+
+.color {
+  width: 18px;
+  height: 18px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.color.red {
+  background-color: var(--red);
+}
+.color.green {
+  background-color: var(--green);
+}
+.color.yellow {
+  background-color: var(--yellow);
+}
+.color.purple {
+  background-color: var(--purple);
 }

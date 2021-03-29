@@ -109,6 +109,24 @@ const Menu = (props) => {
             'uncompleted'
           )}
         </button>
+        <p className='menu-box-header'>Theme</p>
+        <button className='menu-box-option'>
+          <i className='color blue'></i>
+          Blue
+        </button>
+        <button className='menu-box-option'>
+          <i className='color red'></i>Red
+        </button>
+        <button className='menu-box-option'>
+          <i className='color green'></i>Green
+        </button>
+        <button className='menu-box-option'>
+          <i className='color yellow'></i>Yellow
+        </button>
+        <button className='menu-box-option'>
+          <i className='color purple'></i>Purple
+        </button>
+        <button className='menu-box-option'>Custom Color</button>
       </div>
     </div>
   )
