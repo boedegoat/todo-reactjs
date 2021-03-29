@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 
 const Menu = (props) => {
   // Props and state
-  const { todos, setTodos } = props
+  const { todos, setTodos, todosFilter, setTodosFilter } = props
   const menuBox = useRef(null)
 
   // Functions
@@ -24,6 +24,7 @@ const Menu = (props) => {
     const filter = e.target.innerText.toLowerCase()
     switch (filter) {
       case 'all':
+        setTodosFilter('all')
         setTodos(
           [...todos].map((todo) => {
             return {
@@ -35,6 +36,7 @@ const Menu = (props) => {
         break
 
       case 'completed':
+        setTodosFilter('completed')
         setTodos(
           [...todos].map((todo) => {
             if (!todo.completed) {
@@ -53,7 +55,7 @@ const Menu = (props) => {
         break
 
       case 'uncompleted':
-        console.log('uncompleted')
+        setTodosFilter('uncompleted')
         setTodos(
           [...todos].map((todo) => {
             if (todo.completed) {
@@ -81,13 +83,31 @@ const Menu = (props) => {
       <div className='menu-box' ref={menuBox}>
         <p className='menu-box-header'>Sort By</p>
         <button className='menu-box-option' onClick={filterHandler}>
-          All
+          {todosFilter === 'all' ? (
+            <>
+              All <i className='im im-check-mark active'></i>
+            </>
+          ) : (
+            'all'
+          )}
         </button>
         <button className='menu-box-option' onClick={filterHandler}>
-          Completed
+          {todosFilter === 'completed' ? (
+            <>
+              Completed <i className='im im-check-mark active'></i>
+            </>
+          ) : (
+            'completed'
+          )}
         </button>
         <button className='menu-box-option' onClick={filterHandler}>
-          Uncompleted
+          {todosFilter === 'uncompleted' ? (
+            <>
+              Uncompleted <i className='im im-check-mark active'></i>
+            </>
+          ) : (
+            'uncompleted'
+          )}
         </button>
       </div>
     </div>

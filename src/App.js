@@ -7,6 +7,7 @@ const App = () => {
   // States
   const [input, setInput] = useState('')
   const [todos, setTodos] = useState([])
+  const [todosFilter, setTodosFilter] = useState('all')
 
   // functions
   function saveToLocal() {
@@ -40,8 +41,8 @@ const App = () => {
       </header>
       {/* mengoper function ke component di file lain */}
       <Form setInput={setInput} setTodos={setTodos} todos={todos} input={input} />
-      <TodoList todos={todos} setTodos={setTodos} />
-      <Menu todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} todosFilter={todosFilter} />
+      <Menu todos={todos} setTodos={setTodos} todosFilter={todosFilter} setTodosFilter={setTodosFilter} />
     </React.Fragment>
   )
 }

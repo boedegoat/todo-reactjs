@@ -78,6 +78,22 @@ header {
   list-style: none;
 }
 
+.sorted-by {
+  color: #fff;
+  font-weight: bold;
+  margin: 1em;
+  opacity: 0.8;
+  transition: 0.2s;
+}
+
+.break-line {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid white;
+  opacity: 0.3;
+  border-radius: 30px;
+}
+
 .item {
   margin: 1em;
   display: flex;
@@ -154,6 +170,7 @@ header {
   right: 0;
   margin: 0 9em 4em 0;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   display: none;
 }
 
@@ -163,8 +180,9 @@ header {
 
 .menu-box-header {
   font-weight: bold;
-  padding: 0.5em 0.3em;
+  padding: 0.5em 0.6em;
   pointer-events: none;
+  color: var(--primary);
 }
 
 .menu-box-option {
@@ -172,7 +190,11 @@ header {
   border: none;
   outline: none;
   display: flex;
-  padding: 0.5em 0.3em;
+  padding: 0.6em;
+}
+.active {
+  font-size: 14px;
+  margin-left: auto;
 }
 
 .menu-box-option:hover {

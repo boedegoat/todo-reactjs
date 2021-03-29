@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 const TodoList = (props) => {
   // State and props
-  const { todos, setTodos } = props
+  const { todos, setTodos, todosFilter } = props
 
   // Functions
   function checkHandler(e) {
@@ -45,10 +45,16 @@ const TodoList = (props) => {
     setTodos([...todos].filter((todo) => todo.text !== name))
   }
 
+  function capitalize(str) {
+    return str[0].toUpperCase() + str.substring(1)
+  }
+
   // JSX
   return (
     <div className='container'>
       <ul className='list'>
+        <p className='sorted-by'>Sorted by : {capitalize(todosFilter)}</p>
+        <hr className='break-line' />
         {todos.map((todo) => {
           if (todo.show) {
             return (
