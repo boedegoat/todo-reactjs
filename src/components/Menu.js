@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react'
+import { themes } from './../App'
 
 const Menu = (props) => {
   // Props and state
-  const { todos, setTodos, todosFilter, setTodosFilter } = props
+  const { todos, setTodos, todosFilter, setTodosFilter, color, setColor } = props
   const menuBox = useRef(null)
 
   // Functions
@@ -75,13 +76,19 @@ const Menu = (props) => {
     }
   }
 
+  function themeHandler(e) {
+    setColor(e.target.name)
+  }
+
   return (
     <div className='menu'>
-      <button className='menu-btn' onClick={menuHandler}>
+      <button className='menu-btn' onClick={menuHandler} style={{ backgroundColor: themes[color] }}>
         <i className='im im-menu-dot-v menu-icon'></i>
       </button>
       <div className='menu-box' ref={menuBox}>
-        <p className='menu-box-header'>Sort By</p>
+        <p className='menu-box-header' style={{ color: themes[color] }}>
+          Sort By
+        </p>
         <button className='menu-box-option' onClick={filterHandler}>
           {todosFilter === 'all' ? (
             <>
@@ -97,7 +104,7 @@ const Menu = (props) => {
               Completed <i className='im im-check-mark active'></i>
             </>
           ) : (
-            'completed'
+            'Completed'
           )}
         </button>
         <button className='menu-box-option' onClick={filterHandler}>
@@ -106,25 +113,68 @@ const Menu = (props) => {
               Uncompleted <i className='im im-check-mark active'></i>
             </>
           ) : (
-            'uncompleted'
+            'Uncompleted'
           )}
         </button>
-        <p className='menu-box-header'>Theme</p>
-        <button className='menu-box-option'>
-          <i className='color blue'></i>
-          Blue
+
+        {/* Set Theme Color */}
+        <p className='menu-box-header' style={{ color: themes[color] }}>
+          Theme
+        </p>
+        <button className='menu-box-option' name='blue' onClick={themeHandler}>
+          {color === 'blue' ? (
+            <>
+              <i className='color blue'></i>Blue <i className='im im-check-mark active'></i>
+            </>
+          ) : (
+            <>
+              <i className='color blue'></i>Blue
+            </>
+          )}
         </button>
-        <button className='menu-box-option'>
-          <i className='color red'></i>Red
+        <button className='menu-box-option' name='red' onClick={themeHandler}>
+          {color === 'red' ? (
+            <>
+              <i className='color red'></i>Red <i className='im im-check-mark active'></i>
+            </>
+          ) : (
+            <>
+              <i className='color red'></i>Red
+            </>
+          )}
         </button>
-        <button className='menu-box-option'>
-          <i className='color green'></i>Green
+        <button className='menu-box-option' name='green' onClick={themeHandler}>
+          {color === 'green' ? (
+            <>
+              <i className='color green'></i>Green <i className='im im-check-mark active'></i>
+            </>
+          ) : (
+            <>
+              <i className='color green'></i>Green
+            </>
+          )}
         </button>
-        <button className='menu-box-option'>
-          <i className='color yellow'></i>Yellow
+        <button className='menu-box-option' name='yellow' onClick={themeHandler}>
+          {color === 'yellow' ? (
+            <>
+              <i className='color yellow'></i>Yellow <i className='im im-check-mark active'></i>
+            </>
+          ) : (
+            <>
+              <i className='color yellow'></i>Yellow
+            </>
+          )}
         </button>
-        <button className='menu-box-option'>
-          <i className='color purple'></i>Purple
+        <button className='menu-box-option' name='purple' onClick={themeHandler}>
+          {color === 'purple' ? (
+            <>
+              <i className='color purple'></i>Purple <i className='im im-check-mark active'></i>
+            </>
+          ) : (
+            <>
+              <i className='color purple'></i>Purple
+            </>
+          )}
         </button>
         <button className='menu-box-option'>Custom Color</button>
       </div>

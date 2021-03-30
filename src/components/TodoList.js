@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { themes } from './../App'
 
 const TodoList = (props) => {
   // State and props
-  const { todos, setTodos, todosFilter } = props
+  const { todos, setTodos, todosFilter, color } = props
 
   // Functions
   function checkHandler(e) {
@@ -51,16 +52,18 @@ const TodoList = (props) => {
 
   // JSX
   return (
-    <div className='container'>
+    <div className='container' style={{ backgroundColor: themes[color] }}>
       <ul className='list'>
-        <p className='sorted-by'>Sorted by : {capitalize(todosFilter)}</p>
+        <p className='sorted-by' style={{ color: color === 'yellow' ? '#000' : '#fff' }}>
+          Sorted by : {capitalize(todosFilter)}
+        </p>
         <hr className='break-line' />
         {todos.map((todo) => {
           if (todo.show) {
             return (
               <li className='item' key={todo.id}>
                 <input type='checkbox' className='checkbox' name={todo.text} onChange={checkHandler} checked={todo.completed && 'checked'} />
-                <input className={todo.completed ? 'text completed' : 'text'} type='text' name={todo.text} value={todo.text} onChange={editHandler} />
+                <input className={todo.completed ? 'text completed' : 'text'} type='text' name={todo.text} value={todo.text} onChange={editHandler} style={{ color: color === 'yellow' ? '#000' : '#fff' }} />
                 <button className='remove' onClick={removeHandler}>
                   <i className='im im-x-mark-circle remove-icon'></i>
                 </button>

@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react'
+import { themes } from './../App'
 
 const Form = (props) => {
   // State and props
-  const { setInput, setTodos, todos, input } = props
+  const { setInput, setTodos, todos, input, color } = props
   const inputForm = useRef(null)
 
   // functions
@@ -35,7 +36,7 @@ const Form = (props) => {
       <div className='add-list'>
         <input type='text' className='add-input' placeholder='add a task' onChange={inputHandler} ref={inputForm} />
         <button type='submit' className='add-btn' onClick={submitHandler}>
-          <i className='im im-plus-circle add-icon'></i>
+          <i className='im im-plus-circle add-icon' style={{ color: themes[color] }}></i>
         </button>
       </div>
     </form>
