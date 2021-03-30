@@ -176,7 +176,6 @@ const Menu = (props) => {
             </>
           )}
         </button>
-        <button className='menu-box-option'>Custom Color</button>
       </div>
     </div>
   )
