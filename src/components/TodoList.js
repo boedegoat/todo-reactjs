@@ -53,16 +53,19 @@ const TodoList = (props) => {
 
   useEffect(() => {
     const dragArea = items.current
-    console.log(dragArea)
   }, [])
 
   // JSX
   return (
     <div className='container' style={{ backgroundColor: themes[color] }}>
       <ul className='list'>
-        <p className='sorted-by' style={{ color: color === 'yellow' ? '#000' : '#fff' }}>
-          Sorted by : {capitalize(todosFilter)}
-        </p>
+        {todos.length === 0 ? (
+          ''
+        ) : (
+          <p className='sorted-by' style={{ color: color === 'yellow' ? '#000' : '#fff' }}>
+            Sorted by : {capitalize(todosFilter)}
+          </p>
+        )}
         <hr className='break-line' />
         <div className='items' ref={items}>
           {todos.map((todo) => {
