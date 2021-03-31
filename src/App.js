@@ -22,6 +22,7 @@ const App = () => {
   function saveToLocal() {
     localStorage.setItem('todos', JSON.stringify(todos))
     localStorage.setItem('theme', JSON.stringify(color))
+    localStorage.setItem('filter', JSON.stringify(todosFilter))
   }
 
   function getLocal() {
@@ -39,6 +40,14 @@ const App = () => {
     } else {
       let localTheme = JSON.parse(localStorage.getItem('theme'))
       setColor(localTheme)
+    }
+
+    // filter
+    if (localStorage.getItem('filter') === null) {
+      localStorage.setItem('filter', JSON.stringify(todosFilter))
+    } else {
+      let localFilter = JSON.parse(localStorage.getItem('filter'))
+      setTodosFilter(localFilter)
     }
   }
 
