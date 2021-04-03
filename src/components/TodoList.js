@@ -97,14 +97,16 @@ const TodoList = (props) => {
         {todos.length === 0 ? (
           ''
         ) : (
-          <p
-            className='sorted-by'
-            style={{ color: color === 'yellow' ? '#000' : '#fff' }}
-          >
-            Sorted by : {capitalize(todosFilter)}
-          </p>
+          <>
+            <p
+              className='sorted-by'
+              style={{ color: color === 'yellow' ? '#000' : '#fff' }}
+            >
+              Sorted by : {capitalize(todosFilter)}
+            </p>
+            <hr className='break-line' />
+          </>
         )}
-        <hr className='break-line' />
 
         {/* Todo's items */}
         <DragDropContext onDragEnd={handleOnDragEnd}>
