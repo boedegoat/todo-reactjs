@@ -108,6 +108,21 @@ header {
   overflow: hidden;
 }
 
+.item::before {
+  content: '';
+  width: 5px;
+  height: 3px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #fff;
+  margin-right: 8px;
+  opacity: 0;
+}
+
+.item:hover::before {
+  opacity: 1;
+}
+
 .text {
   border: none;
   outline: none;
