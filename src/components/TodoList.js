@@ -1,11 +1,10 @@
-import { logRoles } from '@testing-library/dom'
-import React, { useRef } from 'react'
+import React from 'react'
 import { themes } from './../App'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const TodoList = (props) => {
   // State and props
   const { todos, setTodos, todosFilter, color } = props
-  const items = useRef(null)
 
   // Functions
   function checkHandler(e) {
@@ -83,6 +82,14 @@ const TodoList = (props) => {
     return str[0].toUpperCase() + str.substring(1)
   }
 
+  function handleOnDragEnd(result) {
+    if (!result.destination) return
+    const items = [...todos]
+    const [reorderedItem] = items.splice(result.source.index, 1)
+    items.splice(result.destination.index, 0, reorderedItem)
+    setTodos(items)
+  }
+
   // JSX
   return (
     <div className='container' style={{ backgroundColor: themes[color] }}>
@@ -98,34 +105,66 @@ const TodoList = (props) => {
           </p>
         )}
         <hr className='break-line' />
-        <div className='items' ref={items}>
-          {todos
-            .filter((todo) => todo.show)
-            .map((todo) => {
-              return (
-                <div className='item' key={todo.id} keyvalue={todo.id}>
-                  <input
-                    type='checkbox'
-                    className='checkbox'
-                    name={todo.text}
-                    onChange={checkHandler}
-                    checked={todo.completed && 'checked'}
-                  />
-                  <input
-                    className={todo.completed ? 'text completed' : 'text'}
-                    type='text'
-                    name={todo.text}
-                    value={todo.text}
-                    onChange={editHandler}
-                    style={{ color: color === 'yellow' ? '#000' : '#fff' }}
-                  />
-                  <button className='remove' onClick={removeHandler}>
-                    <i className='im im-x-mark-circle remove-icon'></i>
-                  </button>
-                </div>
-              )
-            })}
-        </div>
+
+        {/* Todo's items */}
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Droppable droppableId='items'>
+            {(provided) => (
+              <div
+                className='items'
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {todos
+                  .filter((todo) => todo.show)
+                  .map((todo, index) => {
+                    return (
+                      <Draggable
+                        key={todo.id}
+                        draggableId={todo.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            className='item'
+                            key={todo.id}
+                            keyvalue={todo.id}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            ref={provided.innerRef}
+                          >
+                            <input
+                              type='checkbox'
+                              className='checkbox'
+                              name={todo.text}
+                              onChange={checkHandler}
+                              checked={todo.completed && 'checked'}
+                            />
+                            <input
+                              className={
+                                todo.completed ? 'text completed' : 'text'
+                              }
+                              type='text'
+                              name={todo.text}
+                              value={todo.text}
+                              onChange={editHandler}
+                              style={{
+                                color: color === 'yellow' ? '#000' : '#fff',
+                              }}
+                            />
+                            <button className='remove' onClick={removeHandler}>
+                              <i className='im im-x-mark-circle remove-icon'></i>
+                            </button>
+                          </div>
+                        )}
+                      </Draggable>
+                    )
+                  })}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </ul>
     </div>
   )
