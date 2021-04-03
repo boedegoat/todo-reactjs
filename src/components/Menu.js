@@ -3,7 +3,15 @@ import { themes } from './../App'
 
 const Menu = (props) => {
   // Props and state
-  const { todos, setTodos, todosFilter, setTodosFilter, color, setColor } = props
+  const {
+    todos,
+    setTodos,
+    todosFilter,
+    setTodosFilter,
+    color,
+    setColor,
+  } = props
+
   const menuBox = useRef(null)
 
   // Functions
@@ -15,11 +23,18 @@ const Menu = (props) => {
     document.addEventListener('click', (e) => {
       const menuBoxClass = menuBox.current.classList
       const targetClass = e.target.classList.value
-      if (menuBoxClass.contains('show-menu-box') && targetClass !== 'menu-btn') {
+      if (
+        menuBoxClass.contains('show-menu-box') &&
+        targetClass !== 'menu-btn'
+      ) {
         menuBoxClass.remove('show-menu-box')
       }
     })
   }, [])
+
+  function themeHandler(e) {
+    setColor(e.target.name)
+  }
 
   function filterHandler(e) {
     const filter = e.target.innerText.toLowerCase()
@@ -73,16 +88,19 @@ const Menu = (props) => {
           })
         )
         break
+
+      default:
     }
   }
 
-  function themeHandler(e) {
-    setColor(e.target.name)
-  }
-
+  // JSX
   return (
     <div className='menu'>
-      <button className='menu-btn' onClick={menuHandler} style={{ backgroundColor: themes[color] }}>
+      <button
+        className='menu-btn'
+        onClick={menuHandler}
+        style={{ backgroundColor: themes[color] }}
+      >
         <i className='im im-menu-dot-v menu-icon'></i>
       </button>
       <div className='menu-box' ref={menuBox}>
@@ -95,7 +113,7 @@ const Menu = (props) => {
               All <i className='im im-check-mark active'></i>
             </>
           ) : (
-            'all'
+            'All'
           )}
         </button>
         <button className='menu-box-option' onClick={filterHandler}>
@@ -124,7 +142,8 @@ const Menu = (props) => {
         <button className='menu-box-option' name='blue' onClick={themeHandler}>
           {color === 'blue' ? (
             <>
-              <i className='color blue'></i>Blue <i className='im im-check-mark active'></i>
+              <i className='color blue'></i>Blue{' '}
+              <i className='im im-check-mark active'></i>
             </>
           ) : (
             <>
@@ -135,7 +154,8 @@ const Menu = (props) => {
         <button className='menu-box-option' name='red' onClick={themeHandler}>
           {color === 'red' ? (
             <>
-              <i className='color red'></i>Red <i className='im im-check-mark active'></i>
+              <i className='color red'></i>Red{' '}
+              <i className='im im-check-mark active'></i>
             </>
           ) : (
             <>
@@ -146,7 +166,8 @@ const Menu = (props) => {
         <button className='menu-box-option' name='green' onClick={themeHandler}>
           {color === 'green' ? (
             <>
-              <i className='color green'></i>Green <i className='im im-check-mark active'></i>
+              <i className='color green'></i>Green{' '}
+              <i className='im im-check-mark active'></i>
             </>
           ) : (
             <>
@@ -154,10 +175,15 @@ const Menu = (props) => {
             </>
           )}
         </button>
-        <button className='menu-box-option' name='yellow' onClick={themeHandler}>
+        <button
+          className='menu-box-option'
+          name='yellow'
+          onClick={themeHandler}
+        >
           {color === 'yellow' ? (
             <>
-              <i className='color yellow'></i>Yellow <i className='im im-check-mark active'></i>
+              <i className='color yellow'></i>Yellow{' '}
+              <i className='im im-check-mark active'></i>
             </>
           ) : (
             <>
@@ -165,10 +191,15 @@ const Menu = (props) => {
             </>
           )}
         </button>
-        <button className='menu-box-option' name='purple' onClick={themeHandler}>
+        <button
+          className='menu-box-option'
+          name='purple'
+          onClick={themeHandler}
+        >
           {color === 'purple' ? (
             <>
-              <i className='color purple'></i>Purple <i className='im im-check-mark active'></i>
+              <i className='color purple'></i>Purple{' '}
+              <i className='im im-check-mark active'></i>
             </>
           ) : (
             <>

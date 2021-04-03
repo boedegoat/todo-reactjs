@@ -34,9 +34,18 @@ const Form = (props) => {
   return (
     <form className='add-section'>
       <div className='add-list'>
-        <input type='text' className='add-input' placeholder='add a task' onChange={inputHandler} ref={inputForm} />
+        <input
+          type='text'
+          className='add-input'
+          placeholder='add a task'
+          onChange={inputHandler}
+          ref={inputForm}
+        />
         <button type='submit' className='add-btn' onClick={submitHandler}>
-          <i className='im im-plus-circle add-icon' style={{ color: themes[color] }}></i>
+          <i
+            className='im im-plus-circle add-icon'
+            style={{ color: themes[color] }}
+          ></i>
         </button>
       </div>
     </form>

@@ -68,9 +68,27 @@ const App = () => {
         <h1 style={{ color: themes[color] }}>TODO</h1>
       </header>
       {/* mengoper function ke component di file lain */}
-      <Form setInput={setInput} setTodos={setTodos} todos={todos} input={input} color={color} />
-      <TodoList todos={todos} setTodos={setTodos} todosFilter={todosFilter} color={color} />
-      <Menu todos={todos} setTodos={setTodos} todosFilter={todosFilter} setTodosFilter={setTodosFilter} color={color} setColor={setColor} />
+      <Form
+        setInput={setInput}
+        setTodos={setTodos}
+        todos={todos}
+        input={input}
+        color={color}
+      />
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        todosFilter={todosFilter}
+        color={color}
+      />
+      <Menu
+        todos={todos}
+        setTodos={setTodos}
+        todosFilter={todosFilter}
+        setTodosFilter={setTodosFilter}
+        color={color}
+        setColor={setColor}
+      />
     </React.Fragment>
   )
 }
