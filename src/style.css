@@ -151,6 +151,7 @@ header {
   background-color: transparent;
   transition: 0.2s;
   transform: translateY(2.1rem);
+  margin-right: 5px;
 }
 
 .remove-icon {
