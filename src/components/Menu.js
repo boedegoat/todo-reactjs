@@ -42,7 +42,7 @@ const Menu = (props) => {
       case 'all':
         setTodosFilter('all')
         setTodos(
-          [...todos].map((todo) => {
+          todos.map((todo) => {
             return {
               ...todo,
               show: true,
@@ -54,7 +54,7 @@ const Menu = (props) => {
       case 'completed':
         setTodosFilter('completed')
         setTodos(
-          [...todos].map((todo) => {
+          todos.map((todo) => {
             if (!todo.completed) {
               return {
                 ...todo,
@@ -73,7 +73,7 @@ const Menu = (props) => {
       case 'uncompleted':
         setTodosFilter('uncompleted')
         setTodos(
-          [...todos].map((todo) => {
+          todos.map((todo) => {
             if (todo.completed) {
               return {
                 ...todo,

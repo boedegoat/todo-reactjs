@@ -23,7 +23,7 @@ const Form = (props) => {
       },
     ])
     setInput('')
-    e.target.previousSibling.value = ''
+    inputForm.current.value = ''
   }
 
   useEffect(() => {

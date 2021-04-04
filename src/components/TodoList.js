@@ -11,7 +11,7 @@ const TodoList = (props) => {
     const name = e.target.name
     const isComplete = e.target.checked
     setTodos(
-      [...todos].map((todo) => {
+      todos.map((todo) => {
         if (todo.text === name) {
           e.target.nextSibling.classList.toggle('completed')
           if (todosFilter === 'all') {
@@ -61,7 +61,7 @@ const TodoList = (props) => {
     const id = e.target.parentNode.getAttribute('keyvalue')
     const edited = e.target.value
     setTodos(
-      [...todos].map((todo) => {
+      todos.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -75,7 +75,7 @@ const TodoList = (props) => {
 
   function removeHandler(e) {
     const id = e.target.parentNode.getAttribute('keyvalue')
-    setTodos([...todos].filter((todo) => todo.id !== id))
+    setTodos(todos.filter((todo) => todo.id !== id))
   }
 
   function capitalize(str) {
