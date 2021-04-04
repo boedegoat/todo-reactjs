@@ -150,7 +150,7 @@ header {
   font-size: 1px;
   background-color: transparent;
   transition: 0.2s;
-  transform: translateY(2.1rem);
+  transform: translateY(2.1rem) scale(0.875);
   margin-right: 5px;
 }
 
@@ -160,7 +160,7 @@ header {
 }
 
 .item:hover .remove {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.875);
 }
 
 .menu-btn {
