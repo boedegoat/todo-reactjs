@@ -84,9 +84,17 @@ const TodoList = (props) => {
 
   function handleOnDragEnd(result) {
     if (!result.destination) return
+    // copy isi todos
     const items = [...todos]
+
+    // hapus element yg lagi di drag dari todos
+    // lalu destructure masukin ke reordereditem
     const [reorderedItem] = items.splice(result.source.index, 1)
+
+    // gabung reorderedItem ke index tujuan
     items.splice(result.destination.index, 0, reorderedItem)
+
+    // setTodos jadi items
     setTodos(items)
   }
 
