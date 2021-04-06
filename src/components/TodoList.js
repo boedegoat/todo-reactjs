@@ -58,14 +58,19 @@ const TodoList = (props) => {
   }
 
   function editHandler(e) {
+    // const inputLength = e.target.value.length
+    // if (inputLength > 23) {
+    //   e.target.rows++
+    // }
+
     const id = e.target.parentNode.getAttribute('keyvalue')
-    const edited = e.target.value
+    const input = e.target.value
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
-            text: edited,
+            text: input,
           }
         }
         return todo
@@ -101,7 +106,7 @@ const TodoList = (props) => {
   // JSX
   return (
     <div className='container' style={{ backgroundColor: themes[color] }}>
-      <ul className='list'>
+      <div className='list'>
         {todos.length === 0 ? (
           ''
         ) : (
@@ -175,7 +180,7 @@ const TodoList = (props) => {
             )}
           </Droppable>
         </DragDropContext>
-      </ul>
+      </div>
     </div>
   )
 }
