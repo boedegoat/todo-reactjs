@@ -166,6 +166,7 @@ const TodoList = (props) => {
                               style={{
                                 color: color === 'yellow' ? '#000' : '#fff',
                               }}
+                              spellCheck={false}
                             />
                             <button className='remove' onClick={removeHandler}>
                               <i className='im im-x-mark-circle remove-icon'></i>
